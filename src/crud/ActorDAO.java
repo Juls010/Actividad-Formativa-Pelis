@@ -16,12 +16,17 @@ public class ActorDAO {
 
 	// Agregar el nombre de un actor nuevo
 	public static void agregarActor(Scanner scanner) {
-		String nombre = scanner.nextLine();
-		String sql = "INSERT INTO pelicula (actorPelicula) VALUES (?)";
+		System.out.println("Dime el nombre del actor a agregar: ");
+		String nombreActor = scanner.nextLine();
+		System.out.println("Dime la nacionalidad del actor: ");
+		int nacionalidadActor  = scanner.nextInt();
+		String sql = "INSERT INTO actor (nombreActor, nacionalidadActor) VALUES (?,?)";
 
 		try (Connection conn = DriverManager.getConnection(URL, USER, PASSWORD);
 				PreparedStatement stmt = conn.prepareStatement(sql)) {
-			stmt.setString(1, nombre);
+			stmt.setString(1, nombreActor);
+			stmt.setInt(2, nacionalidadActor);
+			stmt.executeUpdate();
 			System.out.println("Nombre del actor añadido correctamente");
 
 		} catch (SQLException e) {

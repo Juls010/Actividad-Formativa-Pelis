@@ -59,7 +59,7 @@ public class Main {
 			
 			}
 			
-		}while (opcion != 5);
+		}while (opcion != 9);
 			scanner.close();
 		}
 
